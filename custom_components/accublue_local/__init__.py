@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import logging
+
 import voluptuous as vol
 
 from homeassistant.config_entries import ConfigEntryState
@@ -20,6 +22,8 @@ from .const import (
 )
 from .coordinator import AccuBlueConfigEntry, AccuBlueCoordinator, AccuBlueError
 from .protocol import SANITIZERS
+
+_LOGGER = logging.getLogger(__name__)
 
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
@@ -90,7 +94,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: AccuBlueConfigEntry) -> 
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_on_unload(entry.add_update_listener(_async_update_listener))
+    # One status read so firmware, serial and error state show up without a disc.
+    entry.async_create_background_task(hass, _async_initial_status(coordinator), "accublue_local status")
     return True
+
+
+async def _async_initial_status(coordinator: AccuBlueCoordinator) -> None:
+    try:
+        await coordinator.async_read_status()
+    except Exception as err:  # noqa: BLE001 - best effort, the meter may be out of range
+        _LOGGER.debug("initial status read failed: %s", err)
 
 
 async def _async_update_listener(hass: HomeAssistant, entry: AccuBlueConfigEntry) -> None:
