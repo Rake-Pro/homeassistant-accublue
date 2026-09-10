@@ -1,0 +1,37 @@
+run_test:
+  fields:
+    device_id:
+      required: false
+      example: 4b8e2f1c9a7d6e5f4a3b2c1d0e9f8a7b
+      selector:
+        device:
+          integration: accublue_local
+    config_entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: accublue_local
+    sanitizer:
+      required: false
+      example: chlorine
+      selector:
+        select:
+          translation_key: sanitizer
+          options:
+            - chlorine
+            - salt
+            - bromine
+
+calibrate:
+  fields:
+    device_id:
+      required: false
+      example: 4b8e2f1c9a7d6e5f4a3b2c1d0e9f8a7b
+      selector:
+        device:
+          integration: accublue_local
+    config_entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: accublue_local

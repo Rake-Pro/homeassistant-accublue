@@ -1,0 +1,128 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "bluetooth_confirm": {
+        "title": "Add AccuBlue Home",
+        "description": "Set up {name}. Pick the sanitizer your pool uses; it selects which factors the meter reports.",
+        "data": {
+          "sanitizer": "Sanitizer"
+        }
+      },
+      "user": {
+        "title": "Add AccuBlue Home",
+        "description": "Pick an AccuBlue Home meter seen by an adapter or a Bluetooth proxy.",
+        "data": {
+          "address": "Meter",
+          "sanitizer": "Sanitizer"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This meter is already set up.",
+      "no_devices_found": "No AccuBlue Home meter is in range of an adapter or a Bluetooth proxy."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "AccuBlue Home options",
+        "data": {
+          "sanitizer": "Sanitizer"
+        }
+      }
+    }
+  },
+  "selector": {
+    "sanitizer": {
+      "options": {
+        "chlorine": "Chlorine",
+        "salt": "Salt",
+        "bromine": "Bromine"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "measuring": { "name": "Measuring" },
+      "problem": { "name": "Problem" }
+    },
+    "button": {
+      "run_test": { "name": "Run test" },
+      "fetch_pending": { "name": "Fetch pending test" },
+      "clear_error": { "name": "Clear error" }
+    },
+    "select": {
+      "sanitizer": {
+        "name": "Sanitizer",
+        "state": {
+          "chlorine": "Chlorine",
+          "salt": "Salt",
+          "bromine": "Bromine"
+        }
+      }
+    },
+    "sensor": {
+      "free_chlorine": { "name": "Free chlorine" },
+      "total_chlorine": { "name": "Total chlorine" },
+      "combined_chlorine": { "name": "Combined chlorine" },
+      "bromine": { "name": "Bromine" },
+      "ph": { "name": "pH" },
+      "alkalinity": { "name": "Total alkalinity" },
+      "calcium_hardness": { "name": "Calcium hardness" },
+      "cyanuric_acid": { "name": "Cyanuric acid" },
+      "copper": { "name": "Copper" },
+      "iron": { "name": "Iron" },
+      "salt": { "name": "Salt" },
+      "phosphate": { "name": "Phosphate" },
+      "last_test": { "name": "Last test" },
+      "test_progress": { "name": "Test progress" },
+      "test_counter": { "name": "Test counter" },
+      "firmware": { "name": "Firmware" },
+      "last_error": {
+        "name": "Last error",
+        "state": {
+          "none": "None",
+          "lid_opened": "Lid opened",
+          "speed_lock": "Speed lock",
+          "motor_stall": "Motor stall",
+          "byte_overflow": "Byte overflow"
+        }
+      }
+    }
+  },
+  "services": {
+    "run_test": {
+      "name": "Run test",
+      "description": "Spins a disc in the meter and publishes the computed water results.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "The meter to test. Optional when only one meter is set up."
+        },
+        "config_entry_id": {
+          "name": "Config entry",
+          "description": "The AccuBlue config entry to test. Optional when only one meter is set up."
+        },
+        "sanitizer": {
+          "name": "Sanitizer",
+          "description": "Override the configured sanitizer for this run only."
+        }
+      }
+    },
+    "calibrate": {
+      "name": "Calibrate",
+      "description": "Starts the meter's spin calibration. This is a rotation calibration, not a photometric one.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "The meter to calibrate. Optional when only one meter is set up."
+        },
+        "config_entry_id": {
+          "name": "Config entry",
+          "description": "The AccuBlue config entry to calibrate. Optional when only one meter is set up."
+        }
+      }
+    }
+  }
+}
