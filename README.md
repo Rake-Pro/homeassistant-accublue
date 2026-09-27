@@ -22,6 +22,8 @@ Home Assistant custom integration for the Leslie's AccuBlue Home pool water test
 
 ## Install
 
+Requires Home Assistant 2026.9.0 or later.
+
 HACS custom repository:
 
 | Step | Action |
