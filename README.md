@@ -89,7 +89,7 @@ Manual:
 |---|---|
 | Home Assistant host Intel adapter, 30 cm from the meter | -75 dBm |
 | Link drops at | -80 dBm and below |
-| Office to meter | -81 to -91 dBm, unusable |
+| Far room to meter | -81 to -91 dBm, unusable |
 
 - The meter's radio is weak. An adapter on the Home Assistant host is only enough if the meter sits next to it.
 - Recommended: an ESPHome Bluetooth proxy within a few metres of where the meter lives. The integration goes through proxies without any extra configuration.
@@ -108,5 +108,5 @@ Manual:
 
 - Protocol recovered from the vendor app's LaMotte device library (`DotNetABHApi`), decompiled from `com.lesliespool.mobile`. No vendor code is included or redistributed here.
 - The curve coefficients are the device's published Disk 203 reagent curves, reproduced so the same numbers can be computed locally.
-- Reference client and raw capture: `IoT-Lab/devices/accublue-home`.
+- Protocol reverse-engineered from BLE captures of a real device.
 - Not affiliated with Leslie's or LaMotte.

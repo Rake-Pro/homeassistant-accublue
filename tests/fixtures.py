@@ -1,6 +1,6 @@
 """Real frames captured from the meter on 2026-09-10 (fw 2.26, serial 36951-0925).
 
-Taken verbatim from IoT-Lab/devices/accublue-home/first-run-2026-09-10.log.jsonl.
+Captured verbatim from a real device session.
 The meter pads its attributes, so the frames on the wire are longer than the
 39 status bytes and the 88 well bytes the protocol defines; the parsers read
 only the defined prefix.

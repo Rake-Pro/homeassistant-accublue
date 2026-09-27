@@ -1,9 +1,9 @@
 """AccuBlue Home wire protocol: frame parsing and result math.
 
 Pure python (stdlib only), no Home Assistant imports, so it can be unit tested
-on its own. The parsing and the coefficients are taken verbatim from the
-working reference client (IoT-Lab/devices/accublue-home/accublue.py); do not
-"tidy" the numbers, they are the disc's published curves.
+on its own. The parsing and the coefficients match a working reference client
+used during reverse engineering; do not "tidy" the numbers, they are the
+disc's published curves.
 """
 
 from __future__ import annotations
